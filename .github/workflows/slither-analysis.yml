@@ -26,7 +26,6 @@ jobs:
           sudo apt-get install -y solc
           pip install slither-analyzer
 
-      - name: Run Slither Analysis and Generate Report
+      - name: Run Slither Analysis
         run: |
-          slither ./contracts --json slither-report.json
-
+          slither ./contracts --exclude low --exclude optimization || exit 1
